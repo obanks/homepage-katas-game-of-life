@@ -1,11 +1,37 @@
 export const progressGame = (board) => {
-  const nextTurn = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-  ];
+  const boardRows = board.length;
+  const boardColumns = board[0].length;
+  const nextTurn = [];
+  for (let i=0; i < boardRows; i++) {
+    const newRow = [];
+    for (let j=0; j < boardColumns; j++) {
+      newRow.push(0);
+    }
+    nextTurn.push(newRow);
+  }
 
   const firstRow = board[0];
+
+  for (let i=0; i < boardRows; i++) {
+    for (let j=0; j < boardColumns; j++) {
+      const neighbours = []
+      if(board[i][j] === 1) {
+        neighbours.push(board[i]?.[j-1]) // west
+        neighbours.push(board[i]?.[j+1]) // east
+        neighbours.push(board[i-1]?.[j]) // north
+        neighbours.push(board[i+1]?.[j]) // south
+        neighbours.push(board[i-1]?.[j-1]) // nw
+        neighbours.push(board[i-1]?.[j+1]) // ne
+        neighbours.push(board[i+1]?.[j-1]) // sw
+        neighbours.push(board[i+1]?.[j+1]) // se
+      }
+
+      const livingNeighbours.filter((neighbour) => neighbour === 1)
+
+      // started progressing this function to find all neighbours, with the intention of filtering it to find living neighbours.
+      // we can then apply the rules based on how many neighbours are alive.
+    }
+  }
 
   for (let column of firstRow) {
     if(board[0][column] === 1 && board[1][column] === 1 && board[2][column] === 1){
